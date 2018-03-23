@@ -10,7 +10,7 @@ defmodule KV.Supervisor do
       {KV.Registry, name: KV.Registry},
       {DynamicSupervisor, name: KV.BucketSupervisor, strategy: :one_for_one}
     ]
-    Supervisor.init(children, strategy: :one_for_one)
+    Supervisor.init(children, strategy: :one_for_all)
   end
 
   def handle_cast({:create, name}, {names, refs}) do
